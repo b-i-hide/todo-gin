@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.title}}</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="/">Todo App</a>
+        </h1>
+    </header>
+    <h3>Todoの情報を入力</h3>
+    <form action="/todos/{{.todo.Id}}/update" method="post">
+        <label for="title">タスク名</label><br>
+        <input type="text" name="title" value="{{.todo.Title}}"><br>
+        <label for="dur">期限</label><br>
+        <input type="date" name="due" value="{{.created_at}}"><br>
+        <label for="note">メモ</label><br>
+        <textarea name="note" placeholder="タスクのメモを記入">{{.todo.Note}}</textarea><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

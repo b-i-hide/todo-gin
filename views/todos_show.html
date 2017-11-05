@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{.title}}</title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="/">Todo App</a>
+            </h1>
+        </header>
+        <table>
+            <tr>
+                <th>タスク名</th>
+                <th>作成日</th>
+                <th>期日</th>
+                <th>メモ</th>
+            </tr>
+            <tr>
+                <td>{{ .todo.Title }}</td>
+                <td>{{ .todo.Created_at}}</td>
+                <td>{{ .todo.Due }}</td>
+                <td>{{ .todo.Note }}</td>
+            </tr>
+        </table>
+        <a href="/">戻る</a>
+    </body>
+
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 0 10px;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+    </style>
+</html>

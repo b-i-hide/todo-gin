@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Todo Index</title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="/">Todo App</a>
+            </h1>
+        </header>
+        <form class="form" action="/todos" method="post">
+            <label>タスクを入力</label>
+            <input class="form-todo" type="text" name="title">
+            <label>期限を入力</label>
+            <input type="date" name="due">
+            <input type="submit" class="sbt-button button-primary">
+        </form>
+        <div class="contents">
+            <table>
+                <tr>
+                    <th>タスク名</th>
+                    <th>作成日</th>
+                    <th>期限</th>
+                </tr>
+                {{range $index, $todo := .todos}}
+                    <tr>
+                        <td><a href="/todos/{{$todo.Id}}">{{ $todo.Title }}</a></td>
+                        <td>{{ $todo.Created_at }}</td>
+                        <td>{{ $todo.Due }}</td>
+                        <td><a href="/todos/{{$todo.Id}}/edit">編集</a></td>
+                        <td>
+                            <form action="/todos/{{$todo.Id}}/delete" method="post" class="delete-btn">
+                                <button type="submit" value="delete">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{end}}
+            </table>
+        </div>
+    </body>
+
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 0 10px;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+
+        .contents table tr td form.delete-btn {
+            margin: 10px;
+        }
+    </style>
+</html>
